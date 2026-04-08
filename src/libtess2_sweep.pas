@@ -1208,7 +1208,7 @@ begin
     if e = vEvent^.anEdge then begin
       // All edges go right -- not incident to any processed edges
       ConnectLeftVertex(tess, vEvent);
-      Exit;;
+      Exit;
     end;
   end;
 

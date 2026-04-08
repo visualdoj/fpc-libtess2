@@ -53,7 +53,7 @@ PActiveRegion = ^TActiveRegion;
 // tesselator.h
 TESSreal = Single;
 PTESSreal = ^TESSreal;
-TESSindex = PtrInt;
+TESSindex = Int32;
 PTESSindex = ^TESSindex;
 PTESStesselator = ^TESStesselator;
 
@@ -83,8 +83,8 @@ PBucketAlloc = ^TBucketAlloc;
 TBucketAlloc = record
   freelist: Pointer;
   buckets: PBucket;
-  itemSize: PtrUInt;
-  bucketSize: PtrUInt;
+  itemSize: UInt32;
+  bucketSize: UInt32;
   name: PAnsiChar;
   alloc: PTESSalloc;
 end;
@@ -101,7 +101,7 @@ TESSvertex = record
   // Internal data (keep hidden)
   coords: array[0 .. 2] of TESSreal; // vertex location in 3D
   s, t: TESSreal;     // projection onto the sweep plane
-  pqHandle: PtrInt;   // to allow deletion from priority queue
+  pqHandle: Int32;   // to allow deletion from priority queue
   n: TESSindex;     // to allow identify unique vertices
   idx: TESSindex; // to allow map result to original verts
 end;
@@ -129,7 +129,7 @@ TESShalfEdge = record
 
   // Internal data (keep hidden)
   activeRegion: PActiveRegion; // a region with this upper edge (sweep.c)
-  winding: PtrInt;  // change in winding number when crossing
+  winding: Int32;   // change in winding number when crossing
                     // from the right face to the left face
   mark: Boolean;    // Used by the Edge Flip algorithm
 
@@ -185,7 +185,7 @@ PQkey = Pointer;
 PPQkey = ^PQkey;
 PPPQkey = ^PPQkey;
 
-PQhandle = PtrInt;
+PQhandle = Int32;
 
 PPQnode = ^PQnode;
 PQnode = record
@@ -204,7 +204,7 @@ PPriorityQHeap = ^TPriorityQHeap;
 TPriorityQHeap = record
   nodes: PPQnode;
   handles: PPQhandleElem;
-  size, max: PtrInt;
+  size, max: Int32;
   freeList: PQhandle;
   initialized: Boolean;
 
@@ -254,7 +254,7 @@ end;
 TActiveRegion = record
   eUp: PTESShalfEdge;     // upper edge, directed right to left
   nodeUp: PDictNode;      // dictionary node corresponding to eUp
-  windingNumber: PtrInt;  // used to determine which regions are
+  windingNumber: Int32;   // used to determine which regions are
                           // inside the polygon
   inside: Boolean;   // is this region inside the polygon?
   sentinel: Boolean; // marks fake edges at t = +/-infinity

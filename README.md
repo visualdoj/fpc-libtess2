@@ -67,5 +67,5 @@ end.
 
 I've tried to save implementation the same as much as possible as well to
 simplify side-by-side comparison and debugging, although it is necessary to
-change names of some types to avoid ambiuities, and their placements to get rid
-of circular units dependecies.
+change names of some types to avoid ambiguities, and their placements to get
+rid of circular units dependecies.

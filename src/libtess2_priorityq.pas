@@ -418,7 +418,7 @@ begin
   Exit(not LEQ(y, x));
 end;
 
-function GT(x, Y: PQkey): Boolean; inline;
+function GT(x, y: PQkey): Boolean; inline;
 begin
   Exit(not LEQ(x, y));
 end;
@@ -445,7 +445,7 @@ var
   top: PStackRecord;
   p, r, i, j: PPPQkey;
   piv: PPQkey;
-  seed: PtrUInt;
+  seed: UInt32;
 begin
   top := @Stack[0];
   seed := 2016473283;
