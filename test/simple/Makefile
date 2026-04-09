@@ -1,6 +1,10 @@
 # libtess2 Pascal port - Simple unit test Makefile
 
-SRCDIR := ../..
+ifeq ($(wildcard ../../src),)
+    SRCDIR := ../..
+else
+    SRCDIR := ../../src
+endif
 PROG := test_simple
 
 # Output directories for different targets (avoid interference)
