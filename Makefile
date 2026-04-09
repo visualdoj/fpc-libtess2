@@ -6,6 +6,8 @@
 PROJNAME:=fpc-libtess2
 
 # Test targets
+.PHONY: test test-win64 test-clean
+
 test:
 	$(MAKE) -C test/simple test
 
