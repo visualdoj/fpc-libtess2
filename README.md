@@ -1,11 +1,11 @@
-# libtess2 for pascal
+# libtess2 for Pascal
 
 This is a port of [libtess2](https://github.com/memononen/libtess2) library to
-Free Pascal. The purpose of the port is to reduce complexity of using libtess2
-in free pascal applications. No need to link with external library, no need to
-use C compiler.
+Free Pascal. The purpose of the library is to reduce the complexity of using
+libtess2 in Free Pascal applications. No need to link with external library,
+no need to use C compiler.
 
-I've tried to save interface and behaviour the same as much as possible, so
+I've tried to keep the interface and behaviour as similar as possible, so
 using the library in pascal code is pretty similar to using it in C code:
 
 ```pascal
@@ -65,7 +65,7 @@ begin
 end.
 ```
 
-I've tried to save implementation the same as much as possible as well to
-simplify side-by-side comparison and debugging, although it is necessary to
-change names of some types to avoid ambiguities, and their placements to get
-rid of circular units dependecies.
+I've tried to keep the implementation as similar as possible as well to
+simplify side-by-side comparison and debugging, although it was necessary to
+change the names of some types to avoid ambiguities, and their placement to
+avoid circular unit dependencies.

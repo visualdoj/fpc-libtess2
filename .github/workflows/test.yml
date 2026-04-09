@@ -1,0 +1,46 @@
+name: "Test"
+
+on: 
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  Test:
+    runs-on: ${{ matrix.host }}
+    name: ${{ matrix.name }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix: 
+        include:
+          - name: Linux
+            host: ubuntu-latest
+            fpc_cross: auto
+            test_recipe: test
+          - name: macOS
+            host: macos-latest
+            fpc_cross: auto
+            test_recipe: test
+          - name: macOS (x86_64)
+            host: macos-26-intel
+            fpc_cross: auto
+            test_recipe: test
+          - name: Windows (32-bit)
+            host: windows-latest
+            fpc_cross: auto
+            test_recipe: test
+          - name: Windows (64-bit)
+            host: windows-latest
+            fpc_cross: x86_64-win64
+            test_recipe: test-win64
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: visualdoj/setup-fpc@main
+      - run: fpc -i
+        with:
+            cross: ${{ matrix.fpc_cross }}
+      - run: make ${{ matrix.test_recipe }}
